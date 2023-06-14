@@ -1,0 +1,31 @@
+# permissions for end users to edit appservices.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: appservice-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: app-operator
+    app.kubernetes.io/part-of: app-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: appservice-editor-role
+rules:
+- apiGroups:
+  - apps.kudevops.io
+  resources:
+  - appservices
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apps.kudevops.io
+  resources:
+  - appservices/status
+  verbs:
+  - get

@@ -1,0 +1,18 @@
+apiVersion: apps.kudevops.io/v1alpha1
+kind: AppService
+metadata:
+  labels:
+    app.kubernetes.io/name: appservice
+    app.kubernetes.io/instance: appservice-sample
+    app.kubernetes.io/part-of: app-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: app-operator
+  name: appservice-sample
+spec:
+  replicas: 3
+  image: nginx:latest
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    nodePort: 30080
